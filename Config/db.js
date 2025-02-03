@@ -2,7 +2,7 @@ const mssql = require('mssql');
 
 const dbConfig = {
     user: "sa",
-    password: "sas",
+    password: "sa",
     server: "DESKTOP-Q14UK2C",
     database: "work_item",
     options: {
@@ -25,8 +25,11 @@ const executeQuery = async (query, params = {}) => {
         for (const [key, values] of Object.entries(params)) {
             request.input(key, values);
         }
+
+        console.log(query, params);
+
         const result = await request.query(query);
-        // console.log(result)
+        console.log(result)
         return result;
 
     } catch (error) {
